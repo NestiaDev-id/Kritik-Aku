@@ -1,5 +1,3 @@
-// src/components/QuestionInput.tsx
-
 import React, { useState } from "react";
 
 const QuestionInput: React.FC = () => {
