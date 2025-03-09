@@ -14,7 +14,7 @@ interface Question {
 
 const QuestionList: React.FC = () => {
   // Simulasi daftar pertanyaan
-  const [questions, setQuestions] = useState<Question[]>([
+  const [questions, _setQuestions] = useState<Question[]>([
     {
       id: 1,
       text: "lorem ipsum dolor sit amet, consectetur adipiscing elit?",
