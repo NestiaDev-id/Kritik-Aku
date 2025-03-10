@@ -1,3 +1,5 @@
+import Message from "../models/messageModel.js";
+
 export const createMessage = async (req, res) => {
   try {
     const { name, message } = req.body;
@@ -7,12 +9,17 @@ export const createMessage = async (req, res) => {
     }
 
     // Save message to database
-    const newMessage = { name, message };
+    const newMessage = Message({ name, message });
     await newMessage.save();
 
     // Send message to all connected clients
-  } catch (error) {}
-  res.status(201).json({ message: "Message created" });
+    res.status(201).json({ message: "Message send succesfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Can't send Message", error: error.message });
+    console.log(error);
+  }
 };
 
 export const getMessages = async (req, res) => {
